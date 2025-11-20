@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.model;
+package com.wezaam.withdrawal.withdrawal;
 
 public enum WithdrawalStatus {
 

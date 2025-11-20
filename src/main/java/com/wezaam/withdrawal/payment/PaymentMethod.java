@@ -1,6 +1,7 @@
-package com.wezaam.withdrawal.model;
+package com.wezaam.withdrawal.payment;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wezaam.withdrawal.user.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

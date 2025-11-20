@@ -1,12 +1,9 @@
-package com.wezaam.withdrawal.rest;
+package com.wezaam.withdrawal.withdrawal;
 
-import com.wezaam.withdrawal.model.Withdrawal;
-import com.wezaam.withdrawal.model.WithdrawalScheduled;
-import com.wezaam.withdrawal.model.WithdrawalStatus;
-import com.wezaam.withdrawal.repository.PaymentMethodRepository;
-import com.wezaam.withdrawal.repository.WithdrawalRepository;
-import com.wezaam.withdrawal.repository.WithdrawalScheduledRepository;
-import com.wezaam.withdrawal.service.WithdrawalService;
+import com.wezaam.withdrawal.withdrawal.scheduled.WithdrawalScheduled;
+import com.wezaam.withdrawal.payment.PaymentMethodRepository;
+import com.wezaam.withdrawal.withdrawal.scheduled.WithdrawalScheduledRepository;
+import com.wezaam.withdrawal.user.UserController;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

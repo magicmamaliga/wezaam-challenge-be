@@ -1,6 +1,5 @@
-package com.wezaam.withdrawal.repository;
+package com.wezaam.withdrawal.payment;
 
-import com.wezaam.withdrawal.model.PaymentMethod;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PaymentMethodRepository extends JpaRepository<PaymentMethod, Long> {

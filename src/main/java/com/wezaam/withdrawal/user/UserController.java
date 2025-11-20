@@ -1,7 +1,5 @@
-package com.wezaam.withdrawal.rest;
+package com.wezaam.withdrawal.user;
 
-import com.wezaam.withdrawal.model.User;
-import com.wezaam.withdrawal.repository.UserRepository;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

@@ -1,7 +1,7 @@
-package com.wezaam.withdrawal.service;
+package com.wezaam.withdrawal.withdrawal;
 
 import com.wezaam.withdrawal.exception.TransactionException;
-import com.wezaam.withdrawal.model.PaymentMethod;
+import com.wezaam.withdrawal.payment.PaymentMethod;
 import org.springframework.stereotype.Component;
 
 @Component

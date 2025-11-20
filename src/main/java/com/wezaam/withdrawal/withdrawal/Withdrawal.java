@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.model;
+package com.wezaam.withdrawal.withdrawal;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

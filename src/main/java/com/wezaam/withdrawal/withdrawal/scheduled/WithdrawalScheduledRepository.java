@@ -1,6 +1,5 @@
-package com.wezaam.withdrawal.repository;
+package com.wezaam.withdrawal.withdrawal.scheduled;
 
-import com.wezaam.withdrawal.model.WithdrawalScheduled;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.Instant;

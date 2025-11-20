@@ -1,4 +1,6 @@
-package com.wezaam.withdrawal.model;
+package com.wezaam.withdrawal.user;
+
+import com.wezaam.withdrawal.payment.PaymentMethod;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
