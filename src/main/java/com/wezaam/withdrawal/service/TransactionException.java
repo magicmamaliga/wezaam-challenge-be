@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.exception;
+package com.wezaam.withdrawal.service;
 
 public class TransactionException extends Exception {
 }

@@ -1,12 +1,12 @@
 package com.wezaam.withdrawal.withdrawal;
 
-import com.wezaam.withdrawal.exception.TransactionException;
+import com.wezaam.withdrawal.service.TransactionException;
 import com.wezaam.withdrawal.payment.PaymentMethod;
-import com.wezaam.withdrawal.service.EventsService;
-import com.wezaam.withdrawal.withdrawal.scheduled.WithdrawalScheduled;
 import com.wezaam.withdrawal.payment.PaymentMethodRepository;
+import com.wezaam.withdrawal.service.EventsService;
+import com.wezaam.withdrawal.service.WithdrawalProcessingService;
+import com.wezaam.withdrawal.withdrawal.scheduled.WithdrawalScheduled;
 import com.wezaam.withdrawal.withdrawal.scheduled.WithdrawalScheduledRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,7 @@ import java.util.concurrent.Executors;
 @Service
 public class WithdrawalService {
 
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
     @Resource
     private WithdrawalRepository withdrawalRepository;
     @Resource
@@ -29,8 +30,6 @@ public class WithdrawalService {
     private PaymentMethodRepository paymentMethodRepository;
     @Resource
     private EventsService eventsService;
-
-    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     public void create(Withdrawal withdrawal) {
         Withdrawal pendingWithdrawal = withdrawalRepository.save(withdrawal);
