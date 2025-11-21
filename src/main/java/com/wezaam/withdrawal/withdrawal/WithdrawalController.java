@@ -2,26 +2,27 @@ package com.wezaam.withdrawal.withdrawal;
 
 import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
 import com.wezaam.withdrawal.withdrawal.dto.WithdrawalRequestDTO;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
-@Api
+
 @Slf4j
-@RestController("/withdrawals")
+@RestController
+@RequestMapping("/withdrawals")
+@Tag(name = "Withdrawal API", description = "Operations related to withdrawals")
 public class WithdrawalController {
 
     @Resource
     private WithdrawalService withdrawalService;
 
+    @Operation(summary = "Schedule a withdrawal request", description = "Creates a new scheduled withdrawal")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public WithdrawalDTO scheduleWithdrawalRequest(@Valid WithdrawalRequestDTO withdrawalRequestDTO) {
@@ -31,6 +32,7 @@ public class WithdrawalController {
         return result;
     }
 
+    @Operation(summary = "Find all withdrawals")
     @GetMapping
     public List<WithdrawalDTO> findAll() {
         log.info("Entering findAll");
