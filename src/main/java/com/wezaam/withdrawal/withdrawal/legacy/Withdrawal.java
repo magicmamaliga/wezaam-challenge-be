@@ -1,4 +1,6 @@
-package com.wezaam.withdrawal.withdrawal;
+package com.wezaam.withdrawal.withdrawal.legacy;
+
+import com.wezaam.withdrawal.withdrawal.WithdrawalStatus;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

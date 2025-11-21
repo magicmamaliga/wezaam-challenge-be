@@ -1,6 +1,6 @@
 package com.wezaam.withdrawal.config;
 
-public class BaseNotFoundException extends RuntimeException {
+public class BaseNotFoundException extends Exception {
     public BaseNotFoundException(String message) {
         super(message);
     }

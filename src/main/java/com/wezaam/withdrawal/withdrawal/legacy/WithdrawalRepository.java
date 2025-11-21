@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.withdrawal;
+package com.wezaam.withdrawal.withdrawal.legacy;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

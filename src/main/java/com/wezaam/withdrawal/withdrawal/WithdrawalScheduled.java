@@ -1,6 +1,4 @@
-package com.wezaam.withdrawal.withdrawal.scheduled;
-
-import com.wezaam.withdrawal.withdrawal.WithdrawalStatus;
+package com.wezaam.withdrawal.withdrawal;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,6 +23,18 @@ public class WithdrawalScheduled {
     private Long paymentMethodId;
     @Enumerated(EnumType.STRING)
     private WithdrawalStatus status;
+
+    public WithdrawalScheduled(Double amount, Instant executeAt, Long userId, Long paymentMethodId, WithdrawalStatus status) {
+        this.amount = amount;
+        this.executeAt = executeAt;
+        this.userId = userId;
+        this.paymentMethodId = paymentMethodId;
+        this.status = status;
+    }
+
+    public WithdrawalScheduled() {
+
+    }
 
     public Long getId() {
         return id;

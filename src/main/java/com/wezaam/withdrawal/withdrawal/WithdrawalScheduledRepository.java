@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.withdrawal.scheduled;
+package com.wezaam.withdrawal.withdrawal;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
