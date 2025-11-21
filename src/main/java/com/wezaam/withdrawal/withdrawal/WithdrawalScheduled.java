@@ -1,31 +1,33 @@
 package com.wezaam.withdrawal.withdrawal;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.time.Instant;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-//if we won't change anything in the db we can continue using this table
+@Getter
 @Entity(name = "scheduled_withdrawals")
 public class WithdrawalScheduled {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    @Setter
     private Long transactionId;
     private Double amount;
     private Instant createdAt;
     private Instant executeAt;
     private Long userId;
     private Long paymentMethodId;
+    @Setter
     @Enumerated(EnumType.STRING)
     private WithdrawalStatus status;
 
-    public WithdrawalScheduled(Double amount, Instant executeAt, Long userId, Long paymentMethodId, WithdrawalStatus status) {
+    public WithdrawalScheduled(Double amount, Instant executeAt, Long userId, Long paymentMethodId,
+                               WithdrawalStatus status) {
         this.amount = amount;
         this.executeAt = executeAt;
         this.userId = userId;
@@ -34,70 +36,6 @@ public class WithdrawalScheduled {
     }
 
     public WithdrawalScheduled() {
-
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Instant getExecuteAt() {
-        return executeAt;
-    }
-
-    public void setExecuteAt(Instant executeAt) {
-        this.executeAt = executeAt;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(Long paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
-    }
-
-    public WithdrawalStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(WithdrawalStatus status) {
-        this.status = status;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public Long getTransactionId() {
-        return transactionId;
-    }
 }

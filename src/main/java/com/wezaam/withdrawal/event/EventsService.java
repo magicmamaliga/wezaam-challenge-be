@@ -1,9 +1,7 @@
 package com.wezaam.withdrawal.event;
 
 import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
-import com.wezaam.withdrawal.withdrawal.legacy.Withdrawal;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;

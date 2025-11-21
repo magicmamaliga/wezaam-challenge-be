@@ -7,6 +7,8 @@ import com.wezaam.withdrawal.event.EventsService;
 import com.wezaam.withdrawal.transaction.TransactionException;
 import com.wezaam.withdrawal.transaction.TransactionService;
 import com.wezaam.withdrawal.user.UserService;
+import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
+import com.wezaam.withdrawal.withdrawal.dto.WithdrawalRequestDTO;
 import com.wezaam.withdrawal.withdrawal.legacy.WithdrawalLegacyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,7 +20,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.wezaam.withdrawal.withdrawal.WithdrawalFactory.*;
+import static com.wezaam.withdrawal.withdrawal.dto.WithdrawalFactory.*;
 
 @Slf4j
 @Service

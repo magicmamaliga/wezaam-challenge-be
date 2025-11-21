@@ -1,5 +1,7 @@
-package com.wezaam.withdrawal.withdrawal;
+package com.wezaam.withdrawal.withdrawal.dto;
 
+import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
+import com.wezaam.withdrawal.withdrawal.WithdrawalStatus;
 import com.wezaam.withdrawal.withdrawal.legacy.Withdrawal;
 import org.springframework.stereotype.Component;
 

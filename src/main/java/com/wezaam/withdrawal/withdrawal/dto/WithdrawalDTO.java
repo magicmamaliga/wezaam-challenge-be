@@ -1,4 +1,6 @@
-package com.wezaam.withdrawal.withdrawal;
+package com.wezaam.withdrawal.withdrawal.dto;
+
+import com.wezaam.withdrawal.withdrawal.WithdrawalStatus;
 
 import java.time.Instant;
 

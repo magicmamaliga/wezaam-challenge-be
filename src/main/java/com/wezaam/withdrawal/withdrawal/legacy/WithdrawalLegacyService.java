@@ -1,7 +1,7 @@
 package com.wezaam.withdrawal.withdrawal.legacy;
 
-import com.wezaam.withdrawal.withdrawal.WithdrawalDTO;
-import com.wezaam.withdrawal.withdrawal.WithdrawalFactory;
+import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
+import com.wezaam.withdrawal.withdrawal.dto.WithdrawalFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

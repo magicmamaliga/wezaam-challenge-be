@@ -1,5 +1,7 @@
 package com.wezaam.withdrawal.withdrawal;
 
+import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
+import com.wezaam.withdrawal.withdrawal.dto.WithdrawalRequestDTO;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
