@@ -11,7 +11,7 @@ import java.util.List;
 public class UserService {
 
     @Resource
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public List<User> findAll() {
         log.info("UserService findAll");
@@ -21,9 +21,9 @@ public class UserService {
     public User findById(Long userId) {
         log.info("UserService findById: {}", userId);
         if (userId == null) {
-            throw new UserException("UserId is null");
+            throw new UserNotFoundException("UserId is null");
         }
-        return userRepository.findById(userId).orElseThrow(() -> new UserException("User not found"));
+        return userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
 }

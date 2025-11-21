@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
@@ -18,15 +19,15 @@ import java.util.concurrent.Executors;
 @Service
 public class WithdrawalService {
 
-    @Autowired
+    @Resource
     private WithdrawalRepository withdrawalRepository;
-    @Autowired
+    @Resource
     private WithdrawalScheduledRepository withdrawalScheduledRepository;
-    @Autowired
+    @Resource
     private WithdrawalProcessingService withdrawalProcessingService;
-    @Autowired
+    @Resource
     private PaymentMethodRepository paymentMethodRepository;
-    @Autowired
+    @Resource
     private EventsService eventsService;
 
     private final ExecutorService executorService = Executors.newCachedThreadPool();
