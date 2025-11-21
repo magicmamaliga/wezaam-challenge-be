@@ -1,6 +1,8 @@
 package com.wezaam.withdrawal.user;
 
-public class UserException extends Exception {
+import com.wezaam.withdrawal.config.BaseBadRequestException;
+
+public class UserException extends RuntimeException {
     public UserException(String message) {
         super(message);
     }

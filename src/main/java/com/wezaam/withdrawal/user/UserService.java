@@ -21,7 +21,7 @@ public class UserService {
     public User findById(Long userId) {
         log.info("UserService findById: {}", userId);
         if (userId == null) {
-            throw new UserNotFoundException("UserId is null");
+            throw new UserException("UserId is null");
         }
         return userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
     }

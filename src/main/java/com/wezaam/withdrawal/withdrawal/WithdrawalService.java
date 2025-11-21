@@ -3,9 +3,9 @@ package com.wezaam.withdrawal.withdrawal;
 import com.wezaam.withdrawal.payment.PaymentMethod;
 import com.wezaam.withdrawal.payment.PaymentMethodException;
 import com.wezaam.withdrawal.payment.PaymentMethodService;
-import com.wezaam.withdrawal.service.EventsService;
-import com.wezaam.withdrawal.service.TransactionException;
-import com.wezaam.withdrawal.service.WithdrawalProcessingService;
+import com.wezaam.withdrawal.event.EventsService;
+import com.wezaam.withdrawal.transaction.TransactionException;
+import com.wezaam.withdrawal.transaction.TransactionService;
 import com.wezaam.withdrawal.user.UserService;
 import com.wezaam.withdrawal.withdrawal.legacy.WithdrawalLegacyService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class WithdrawalService {
     @Resource
     private WithdrawalScheduledRepository withdrawalScheduledRepository;
     @Resource
-    private WithdrawalProcessingService withdrawalProcessingService;
+    private TransactionService transactionService;
     @Resource
     private EventsService eventsService;
     @Resource
@@ -73,9 +73,7 @@ public class WithdrawalService {
         }
 
         try {
-            var transactionId =
-                    withdrawalProcessingService.sendToProcessing(withdrawal.getAmount(),
-                            paymentMethod);
+            var transactionId = transactionService.sendToProcessing(withdrawal.getAmount(), paymentMethod);
             withdrawal.setStatus(WithdrawalStatus.PROCESSING);
             withdrawal.setTransactionId(transactionId);
         } catch (TransactionException e) {

@@ -1,10 +1,10 @@
-package com.wezaam.withdrawal.service;
+package com.wezaam.withdrawal.transaction;
 
 import com.wezaam.withdrawal.payment.PaymentMethod;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WithdrawalProcessingService {
+public class TransactionService {
 
     public Long sendToProcessing(Double amount, PaymentMethod paymentMethod) throws TransactionException {
         // call a payment provider

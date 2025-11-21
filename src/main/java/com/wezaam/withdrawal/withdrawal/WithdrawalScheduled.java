@@ -9,6 +9,7 @@ import java.time.Instant;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+//if we won't change anything in the db we can continue using this table
 @Entity(name = "scheduled_withdrawals")
 public class WithdrawalScheduled {
 
