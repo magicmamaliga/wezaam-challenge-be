@@ -39,13 +39,13 @@ public class UserService {
      *
      * @param userId the ID of the user to retrieve. Must not be {@code null}.
      * @return the {@link UserDTO} entity if found.
-     * @throws UserException           if the provided {@code userId} is {@code null}.
+     * @throws UserBadRequestException           if the provided {@code userId} is {@code null}.
      * @throws UserNotFoundException   if no user with the given ID exists.
      */
     public UserDTO findById(Long userId) {
         log.info("UserService findById: {}", userId);
         if (userId == null) {
-            throw new UserException("UserId is null");
+            throw new UserBadRequestException("UserId is null");
         }
         return createUserDTOFromUser(userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found")));

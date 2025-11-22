@@ -17,8 +17,10 @@ public class PaymentMethodServiceIntegrationTest {
 
     @Test
     void findById_shouldReturnExistingPaymentMethod() {
+        // When
         PaymentMethod method = paymentMethodService.findById(1L);
 
+        // Then
         assertThat(method).isNotNull();
         assertThat(method.getName()).isEqualTo("My bank account");
         assertThat(method.getUser().getId()).isEqualTo(1L);

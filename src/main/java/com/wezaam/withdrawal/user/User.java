@@ -23,4 +23,17 @@ public class User {
     @Column(name = "max_withdrawal_amount")
     private Double maxWithdrawalAmount;
 
+    public User() {
+    }
+
+    User(Long id, String firstName) {
+        this.id = id;
+        this.firstName = firstName;
+    }
+
+    User(Long id, String firstName, Double maxWithdrawalAmount) {
+        this.id = id;
+        this.firstName = firstName;
+        this.maxWithdrawalAmount = maxWithdrawalAmount;
+    }
 }

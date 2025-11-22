@@ -22,25 +22,26 @@ class PaymentMethodServiceTest {
 
     @Test
     void findById_shouldReturnPaymentMethod_whenExists() {
-        // Arrange
+        // Given
         Long id = 1L;
         PaymentMethod expectedMethod = new PaymentMethod();
         when(paymentMethodRepository.findById(id)).thenReturn(Optional.of(expectedMethod));
 
-        // Act
+        // When
         PaymentMethod result = paymentMethodService.findById(id);
 
-        // Assert
+        // Then
         assertThat(result).isEqualTo(expectedMethod);
     }
 
     @Test
     void findById_shouldThrowPaymentMethodException_whenNotFound() {
-        // Arrange
+        // Given
         Long id = 1L;
         when(paymentMethodRepository.findById(id)).thenReturn(Optional.empty());
 
-        // Act & Assert
+        // When
+        // Then
         assertThatThrownBy(() -> paymentMethodService.findById(id))
                 .isInstanceOf(PaymentMethodException.class)
                 .hasMessage("Payment method not found");

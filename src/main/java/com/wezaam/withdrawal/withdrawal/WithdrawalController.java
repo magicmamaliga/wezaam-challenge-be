@@ -34,7 +34,7 @@ public class WithdrawalController {
     @Operation(summary = "Schedule a withdrawal request", description = "Creates a new scheduled withdrawal")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public WithdrawalDTO scheduleWithdrawalRequest(@Valid WithdrawalRequestDTO withdrawalRequestDTO) {
+    public WithdrawalDTO scheduleWithdrawalRequest(@RequestBody @Valid WithdrawalRequestDTO withdrawalRequestDTO) {
         log.info("Entering scheduleWithdrawalRequest with withdrawalRequestDTO: {}", withdrawalRequestDTO);
         WithdrawalDTO result = withdrawalService.schedule(withdrawalRequestDTO);
         log.info("Exiting scheduleWithdrawalRequest with result: {}", result);

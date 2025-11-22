@@ -27,4 +27,16 @@ public class Withdrawal {
     @Enumerated(EnumType.STRING)
     private WithdrawalStatus status;
 
+    public Withdrawal() {
+    }
+
+    public Withdrawal(Long id, Long transactionId, Double amount, Instant createdAt, Long userId, Long paymentMethodId, WithdrawalStatus status) {
+        this.id = id;
+        this.transactionId = transactionId;
+        this.amount = amount;
+        this.createdAt = createdAt;
+        this.userId = userId;
+        this.paymentMethodId = paymentMethodId;
+        this.status = status;
+    }
 }

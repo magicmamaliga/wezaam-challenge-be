@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @Slf4j
 @RestControllerAdvice
@@ -30,6 +31,17 @@ public class GlobalExceptionHandler {
         String errorMessage = ex.getConstraintViolations().stream().map(violation -> violation.getPropertyPath() + ":" +
                 " " + violation.getMessage()).findFirst().orElse("Invalid request parameter");
         log.warn("Constraint violation with: {}", errorMessage);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        String errorMessage = String.format(
+                "Parameter '%s' must be of type '%s'",
+                ex.getName(),
+                ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName() : "unknown"
+        );
+        log.warn("MethodArgumentTypeMismatchException: {}", errorMessage);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
     }
 
