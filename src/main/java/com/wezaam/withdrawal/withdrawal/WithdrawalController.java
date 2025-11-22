@@ -12,7 +12,9 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
-
+/**
+ * REST controller that handles Withdrawal API requests.
+ */
 @Slf4j
 @RestController
 @RequestMapping("/withdrawals")
@@ -22,6 +24,13 @@ public class WithdrawalController {
     @Resource
     private WithdrawalService withdrawalService;
 
+
+    /**
+     * Creates and schedules a new withdrawal request.
+     *
+     * @param withdrawalRequestDTO request details for the withdrawal, must be valid
+     * @return the created {@link WithdrawalDTO}
+     */
     @Operation(summary = "Schedule a withdrawal request", description = "Creates a new scheduled withdrawal")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -32,6 +41,12 @@ public class WithdrawalController {
         return result;
     }
 
+
+    /**
+     * Retrieves all withdrawal records.
+     *
+     * @return a {@link List} of {@link WithdrawalDTO}
+     */
     @Operation(summary = "Find all withdrawals")
     @GetMapping
     public List<WithdrawalDTO> findAll() {

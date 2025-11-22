@@ -1,26 +1,35 @@
 package com.wezaam.withdrawal.withdrawal.legacy;
 
 import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
-import com.wezaam.withdrawal.withdrawal.dto.WithdrawalFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+import static com.wezaam.withdrawal.withdrawal.dto.WithdrawalFactory.createWithdrawalDTOsFromWithdrawals;
+
+/**
+ * Service responsible for retrieving legacy withdrawal records
+ * from the old system. Used for backward compatibility.
+ */
 @Slf4j
 @Service
 public class WithdrawalLegacyService {
 
-    private final WithdrawalRepository withdrawalRepository;
+    @Resource
+    private WithdrawalRepository withdrawalRepository;
 
-    public WithdrawalLegacyService(WithdrawalRepository withdrawalRepository) {
-        this.withdrawalRepository = withdrawalRepository;
-    }
-
-    public List<WithdrawalDTO> findAll(){
+    /**
+     * Retrieves all legacy withdrawal entities,
+     * converts them to DTOs, and returns them.
+     *
+     * @return {@link List} of {@link WithdrawalDTO} representing legacy data
+     */
+    public List<WithdrawalDTO> findAll() {
         log.info("Entering findAll");
         List<Withdrawal> withdrawals = withdrawalRepository.findAll();
-        return WithdrawalFactory.createWithdrawalDTOsFromWithdrawals(withdrawals);
+        return createWithdrawalDTOsFromWithdrawals(withdrawals);
     }
 
 }

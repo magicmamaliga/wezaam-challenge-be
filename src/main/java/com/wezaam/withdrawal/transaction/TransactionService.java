@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionService {
 
+    //if this also needs retry, just use a similar implementation as in the EventsService
     public Long sendToProcessing(Double amount, PaymentMethod paymentMethod) throws TransactionException {
         // call a payment provider
         // in case a transaction can be process

@@ -33,6 +33,7 @@ public class WithdrawalScheduled {
         this.userId = userId;
         this.paymentMethodId = paymentMethodId;
         this.status = status;
+        this.createdAt = Instant.now();
     }
 
     public WithdrawalScheduled() {

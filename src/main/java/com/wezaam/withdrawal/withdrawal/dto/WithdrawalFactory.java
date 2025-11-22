@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Component
 public class WithdrawalFactory {
@@ -23,7 +24,7 @@ public class WithdrawalFactory {
     }
 
     public static List<WithdrawalDTO> createWithdrawalDTOsFromWithdrawalSchedules(List<WithdrawalScheduled> withdrawals) {
-        return withdrawals.stream().map(WithdrawalFactory::createWithdrawalDTOFromWithdrawal).collect(Collectors.toList());
+        return withdrawals.stream().map(WithdrawalFactory::createWithdrawalDTOFromWithdrawal).collect(toList());
     }
 
     public static List<WithdrawalDTO> createWithdrawalDTOsFromWithdrawals(List<Withdrawal> withdrawals) {
@@ -36,7 +37,7 @@ public class WithdrawalFactory {
                         withdrawal.getPaymentMethodId(),
                         withdrawal.getStatus(),
                         null)
-        ).collect(Collectors.toList());
+        ).collect(toList());
     }
 
     public static WithdrawalDTO createWithdrawalDTOFromWithdrawal(WithdrawalScheduled withdrawalScheduled) {
