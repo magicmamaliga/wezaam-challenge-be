@@ -7,10 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "payment_methods")
+@Getter
 public class PaymentMethod {
 
     @Id
