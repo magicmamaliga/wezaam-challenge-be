@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -29,11 +29,11 @@ public class UserController {
     /**
      * Retrieves a list of all users.
      *
-     * @return a {@link List} of {@link User} objects representing all users.
+     * @return a {@link List} of {@link UserDTO} objects representing all users.
      */
     @Operation(summary = "Get all users")
     @GetMapping
-    public List<User> findAll() {
+    public List<UserDTO> findAll() {
         log.info("UserService findAll");
         return userService.findAll();
     }
@@ -42,11 +42,11 @@ public class UserController {
      * Retrieves the details of a specific user by their unique identifier.
      *
      * @param id the ID of the user to be retrieved; must not be {@code null}.
-     * @return the {@link User} object matching the provided ID.
+     * @return the {@link UserDTO} object matching the provided ID.
      */
     @Operation(summary = "Get user by ID")
     @GetMapping("/{id}")
-    public User findById(@PathVariable @NotNull Long id) {
+    public UserDTO findById(@PathVariable @NotNull Long id) {
         log.info("UserService findById: {}", id);
         return userService.findById(id);
     }

@@ -2,7 +2,7 @@ package com.wezaam.withdrawal.event;
 
 import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity(name = "failed_events")
 public class FailedEvent {

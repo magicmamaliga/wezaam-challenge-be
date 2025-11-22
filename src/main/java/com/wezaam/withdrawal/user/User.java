@@ -2,23 +2,25 @@ package com.wezaam.withdrawal.user;
 
 import com.wezaam.withdrawal.payment.PaymentMethod;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.Getter;
+
 import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "users")
+@Getter
 public class User {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    @Column(name = "first_name")
     private String firstName;
     @OneToMany(mappedBy="user")
     private List<PaymentMethod> paymentMethods;
+    @Column(name = "max_withdrawal_amount")
     private Double maxWithdrawalAmount;
 
 }

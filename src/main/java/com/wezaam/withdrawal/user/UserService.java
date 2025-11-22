@@ -3,8 +3,11 @@ package com.wezaam.withdrawal.user;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.List;
+
+import static com.wezaam.withdrawal.user.UserToDTOFactory.createUserDTOFromUser;
+import static com.wezaam.withdrawal.user.UserToDTOFactory.createUserDTOListFromUserList;
 
 
 /**
@@ -24,27 +27,28 @@ public class UserService {
     /**
      * Retrieves all users from the database.
      *
-     * @return a list of all {@link User} entities.
+     * @return a list of all {@link UserDTO} entities.
      */
-    public List<User> findAll() {
+    public List<UserDTO> findAll() {
         log.info("UserService findAll");
-        return userRepository.findAll();
+        return createUserDTOListFromUserList(userRepository.findAll());
     }
 
     /**
-     * Retrieves a {@link User} by their unique identifier.
+     * Retrieves a {@link UserDTO} by their unique identifier.
      *
      * @param userId the ID of the user to retrieve. Must not be {@code null}.
-     * @return the {@link User} entity if found.
+     * @return the {@link UserDTO} entity if found.
      * @throws UserException           if the provided {@code userId} is {@code null}.
      * @throws UserNotFoundException   if no user with the given ID exists.
      */
-    public User findById(Long userId) {
+    public UserDTO findById(Long userId) {
         log.info("UserService findById: {}", userId);
         if (userId == null) {
             throw new UserException("UserId is null");
         }
-        return userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return createUserDTOFromUser(userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found")));
     }
 
 }

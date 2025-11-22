@@ -3,14 +3,14 @@ package com.wezaam.withdrawal.withdrawal.legacy;
 import com.wezaam.withdrawal.withdrawal.WithdrawalStatus;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import java.time.Instant;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "withdrawals")
 @Getter
