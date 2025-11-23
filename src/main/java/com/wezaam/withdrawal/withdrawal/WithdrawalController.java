@@ -4,12 +4,12 @@ import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
 import com.wezaam.withdrawal.withdrawal.dto.WithdrawalRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
-import jakarta.validation.Valid;
 import java.util.List;
 
 /**
@@ -23,7 +23,6 @@ public class WithdrawalController {
 
     @Resource
     private WithdrawalService withdrawalService;
-
 
     /**
      * Creates and schedules a new withdrawal request.
@@ -40,7 +39,6 @@ public class WithdrawalController {
         log.info("Exiting scheduleWithdrawalRequest with result: {}", result);
         return result;
     }
-
 
     /**
      * Retrieves all withdrawal records.

@@ -38,7 +38,6 @@ public class WithdrawalProcessor {
      */
     @Scheduled(fixedDelay = 5000)
     public void run() {
-        log.info("Process scheduled withdrawals");
         withdrawalScheduledRepository.findAllByExecuteAtBefore(Instant.now()).forEach(this::processScheduled);
     }
 
@@ -59,7 +58,7 @@ public class WithdrawalProcessor {
      * @param withdrawal the scheduled withdrawal entity to process
      */
     void processScheduled(WithdrawalScheduled withdrawal) {
-
+        log.info("Entering processScheduled with withdrawal: {}", withdrawal);
         PaymentMethod paymentMethod;
         try {
             paymentMethod = paymentMethodService.findById(withdrawal.getPaymentMethodId());
@@ -73,10 +72,13 @@ public class WithdrawalProcessor {
             var transactionId = transactionService.sendToProcessing(withdrawal.getAmount(), paymentMethod);
             withdrawal.setStatus(WithdrawalStatus.PROCESSING);
             withdrawal.setTransactionId(transactionId);
+            log.info("Withdrawal sent to processing withdrawal: {}", withdrawal);
         } catch (TransactionException e) {
             withdrawal.setStatus(WithdrawalStatus.FAILED);
+            log.info("Withdrawal processing failed withdrawal: {}", withdrawal);
         } catch (Exception e) {
             withdrawal.setStatus(WithdrawalStatus.INTERNAL_ERROR);
+            log.info("Withdrawal processing failed with Internal error withdrawal: {}", withdrawal);
         }
         eventsService.send(withdrawal);
         withdrawalScheduledRepository.save(withdrawal);

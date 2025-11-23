@@ -1,10 +1,10 @@
 package com.wezaam.withdrawal.withdrawal.legacy;
 
 import com.wezaam.withdrawal.withdrawal.dto.WithdrawalDTO;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.Resource;
 import java.util.List;
 
 import static com.wezaam.withdrawal.withdrawal.dto.WithdrawalFactory.createWithdrawalDTOsFromWithdrawals;

@@ -2,6 +2,7 @@ package com.wezaam.withdrawal.withdrawal;
 
 import com.wezaam.withdrawal.event.EventsService;
 import com.wezaam.withdrawal.payment.PaymentMethod;
+import com.wezaam.withdrawal.payment.PaymentMethodDTO;
 import com.wezaam.withdrawal.payment.PaymentMethodException;
 import com.wezaam.withdrawal.payment.PaymentMethodService;
 import com.wezaam.withdrawal.transaction.TransactionException;
@@ -59,7 +60,7 @@ class WithdrawalProcessorIntegrationTest {
     @Test
     void run_shouldProcessWithdrawalSuccessfully() throws Exception {
         // Given
-        PaymentMethod paymentMethod = new PaymentMethod();
+        PaymentMethodDTO paymentMethod = new PaymentMethodDTO(1L, 1L, "Mate");
         when(paymentMethodService.findById(10L)).thenReturn(paymentMethod);
         when(transactionService.sendToProcessing(100.0, paymentMethod)).thenReturn(123L);
 

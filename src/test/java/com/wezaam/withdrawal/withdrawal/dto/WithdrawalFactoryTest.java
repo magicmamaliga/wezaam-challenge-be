@@ -18,7 +18,7 @@ class WithdrawalFactoryTest {
     @Test
     void createFromRequest_shouldCreateWithdrawalScheduled_whenExecuteAtIsASAP() {
         // Given
-        WithdrawalRequestDTO requestDTO = new WithdrawalRequestDTO(1L,  10L, BigDecimal.valueOf(100), "ASAP");
+        WithdrawalRequestDTO requestDTO = new WithdrawalRequestDTO(1L, 10L, BigDecimal.valueOf(100), "ASAP");
 
         // When
         WithdrawalScheduled result = WithdrawalFactory.createFromRequest(requestDTO);
@@ -36,7 +36,7 @@ class WithdrawalFactoryTest {
     void createFromRequest_shouldUseParsedTimestamp_whenExecuteAtIsValidISO() {
         // Given
         String timestamp = "2025-01-01T10:00:00Z";
-        WithdrawalRequestDTO requestDTO = new WithdrawalRequestDTO(1L,  10L, BigDecimal.valueOf(100), timestamp);
+        WithdrawalRequestDTO requestDTO = new WithdrawalRequestDTO(1L, 10L, BigDecimal.valueOf(100), timestamp);
 
         // When
         WithdrawalScheduled result = WithdrawalFactory.createFromRequest(requestDTO);
@@ -49,7 +49,8 @@ class WithdrawalFactoryTest {
     @Test
     void createFromRequest_shouldThrowException_whenExecuteAtIsInvalid() {
         // Given
-        WithdrawalRequestDTO requestDTO = new WithdrawalRequestDTO(1L,  10L, BigDecimal.valueOf(100), "Invalid Timestamp");
+        WithdrawalRequestDTO requestDTO = new WithdrawalRequestDTO(1L, 10L, BigDecimal.valueOf(100), "Invalid " +
+                "Timestamp");
 
         // When & Then
         assertThatThrownBy(() -> WithdrawalFactory.createFromRequest(requestDTO))
@@ -60,7 +61,8 @@ class WithdrawalFactoryTest {
     @Test
     void createWithdrawalDTOFromScheduled_shouldMapCorrectly() {
         // Given
-        WithdrawalScheduled scheduled = new WithdrawalScheduled(300.0, Instant.now(), 3L, 30L, WithdrawalStatus.PENDING);
+        WithdrawalScheduled scheduled = new WithdrawalScheduled(300.0, Instant.now(), 3L, 30L,
+                WithdrawalStatus.PENDING);
 
         // When
         WithdrawalDTO dto = WithdrawalFactory.createWithdrawalDTOFromWithdrawal(scheduled);

@@ -1,9 +1,10 @@
 package com.wezaam.withdrawal.event;
 
 import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
-
 import jakarta.persistence.*;
+import lombok.ToString;
 
+@ToString
 @Entity(name = "failed_events")
 public class FailedEvent {
 

@@ -1,13 +1,12 @@
 package com.wezaam.withdrawal.event;
 
 import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import jakarta.annotation.Resource;
 
 /**
  * Service responsible for sending events related to withdrawal operations.

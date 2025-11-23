@@ -1,19 +1,17 @@
 package com.wezaam.withdrawal.withdrawal.legacy;
 
 import com.wezaam.withdrawal.withdrawal.WithdrawalStatus;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.ToString;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import java.time.Instant;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Entity(name = "withdrawals")
+@ToString
 @Getter
+@Entity(name = "withdrawals")
 public class Withdrawal {
 
     @Id
@@ -30,7 +28,8 @@ public class Withdrawal {
     public Withdrawal() {
     }
 
-    public Withdrawal(Long id, Long transactionId, Double amount, Instant createdAt, Long userId, Long paymentMethodId, WithdrawalStatus status) {
+    public Withdrawal(Long id, Long transactionId, Double amount, Instant createdAt, Long userId,
+                      Long paymentMethodId, WithdrawalStatus status) {
         this.id = id;
         this.transactionId = transactionId;
         this.amount = amount;

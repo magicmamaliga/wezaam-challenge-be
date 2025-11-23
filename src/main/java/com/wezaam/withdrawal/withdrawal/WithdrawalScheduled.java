@@ -1,14 +1,16 @@
 package com.wezaam.withdrawal.withdrawal;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-import jakarta.persistence.*;
 import java.time.Instant;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Getter
+@ToString
 @Entity(name = "scheduled_withdrawals")
 public class WithdrawalScheduled {
 

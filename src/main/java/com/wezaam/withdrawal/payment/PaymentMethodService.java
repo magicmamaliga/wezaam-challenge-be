@@ -1,9 +1,8 @@
 package com.wezaam.withdrawal.payment;
 
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import jakarta.annotation.Resource;
 
 
 /**
@@ -26,7 +25,7 @@ public class PaymentMethodService {
      */
     public PaymentMethod findById(Long paymentMethodId) {
         log.info("Entering findById with paymentMethodId {}", paymentMethodId);
-        return  paymentMethodRepository.findById(paymentMethodId)
+        return paymentMethodRepository.findById(paymentMethodId)
                 .orElseThrow(() -> new PaymentMethodException("Payment method not found"));
     }
 

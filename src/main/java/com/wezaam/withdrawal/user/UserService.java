@@ -1,9 +1,9 @@
 package com.wezaam.withdrawal.user;
 
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.Resource;
 import java.util.List;
 
 import static com.wezaam.withdrawal.user.UserToDTOFactory.createUserDTOFromUser;
@@ -39,7 +39,7 @@ public class UserService {
      *
      * @param userId the ID of the user to retrieve. Must not be {@code null}.
      * @return the {@link UserDTO} entity if found.
-     * @throws UserBadRequestException           if the provided {@code userId} is {@code null}.
+     * @throws UserBadRequestException if the provided {@code userId} is {@code null}.
      * @throws UserNotFoundException   if no user with the given ID exists.
      */
     public UserDTO findById(Long userId) {

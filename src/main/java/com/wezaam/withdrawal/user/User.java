@@ -1,7 +1,6 @@
 package com.wezaam.withdrawal.user;
 
 import com.wezaam.withdrawal.payment.PaymentMethod;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -18,7 +17,7 @@ public class User {
     private Long id;
     @Column(name = "first_name")
     private String firstName;
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy = "user")
     private List<PaymentMethod> paymentMethods;
     @Column(name = "max_withdrawal_amount")
     private Double maxWithdrawalAmount;
