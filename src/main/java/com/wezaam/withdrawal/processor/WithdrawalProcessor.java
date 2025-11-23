@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
+import static com.wezaam.withdrawal.withdrawal.WithdrawalStatus.PENDING;
+
 /**
  * Processes the scheduled withdrawals
  */
@@ -41,7 +43,7 @@ public class WithdrawalProcessor {
      */
     @Scheduled(fixedDelay = 5000)
     public void run() {
-        withdrawalScheduledRepository.findAllByExecuteAtBefore(Instant.now()).forEach(this::processScheduled);
+        withdrawalScheduledRepository.findAllByExecuteAtBeforeAndStatus(Instant.now(), PENDING).forEach(this::processScheduled);
     }
 
     /**

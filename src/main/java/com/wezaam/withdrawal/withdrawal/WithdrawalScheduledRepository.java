@@ -10,4 +10,8 @@ public interface WithdrawalScheduledRepository extends JpaRepository<WithdrawalS
     // with Instant and PENDING
     List<WithdrawalScheduled> findAllByExecuteAtBefore(Instant date);
 
+    List<WithdrawalScheduled> findAllByExecuteAtBeforeAndStatus(
+            Instant executeAt,
+            WithdrawalStatus status
+    );
 }

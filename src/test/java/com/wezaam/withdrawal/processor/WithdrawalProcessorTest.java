@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Instant;
+import java.util.List;
 
 import static com.wezaam.withdrawal.withdrawal.WithdrawalStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,6 +38,26 @@ class WithdrawalProcessorTest {
 
     @InjectMocks
     private WithdrawalProcessor withdrawalProcessor;
+
+    @Test
+    void run_shouldProcessOnlyPendingWithdrawalsThatAreDue() {
+        // Given
+        WithdrawalScheduled pendingWithdrawal =
+                new WithdrawalScheduled(100.0, Instant.now().minusSeconds(10), 1L, 1L, PENDING);
+        WithdrawalScheduled alreadyProcessed =
+                new WithdrawalScheduled(100.0, Instant.now().minusSeconds(10), 1L, 1L, PROCESSING);
+
+        when(withdrawalScheduledRepository.findAllByExecuteAtBeforeAndStatus(any(Instant.class), eq(PENDING)))
+                .thenReturn(List.of(pendingWithdrawal));
+
+        // When
+        withdrawalProcessor.run();
+
+        // Then
+        verify(withdrawalScheduledRepository, times(1)).findAllByExecuteAtBeforeAndStatus(any(Instant.class), eq(PENDING));
+        verify(withdrawalScheduledRepository, times(1)).save(pendingWithdrawal);
+        verify(withdrawalScheduledRepository, never()).save(alreadyProcessed);
+    }
 
     @Test
     void processScheduled_shouldMarkAsProcessing_andSendEvent_onSuccess() throws Exception {
