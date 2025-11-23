@@ -1,6 +1,6 @@
 package com.wezaam.withdrawal.user;
 
-import com.wezaam.withdrawal.exception.BaseNotFoundException;
+import com.wezaam.withdrawal.util.exception.BaseNotFoundException;
 
 public class UserNotFoundException extends BaseNotFoundException {
     public UserNotFoundException(String message) {

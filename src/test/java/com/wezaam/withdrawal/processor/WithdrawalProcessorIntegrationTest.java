@@ -1,11 +1,13 @@
-package com.wezaam.withdrawal.withdrawal;
+package com.wezaam.withdrawal.processor;
 
-import com.wezaam.withdrawal.event.EventsService;
+import com.wezaam.withdrawal.processor.event.EventsService;
 import com.wezaam.withdrawal.payment.PaymentMethod;
 import com.wezaam.withdrawal.payment.PaymentMethodException;
 import com.wezaam.withdrawal.payment.PaymentMethodService;
-import com.wezaam.withdrawal.transaction.TransactionException;
-import com.wezaam.withdrawal.transaction.TransactionService;
+import com.wezaam.withdrawal.processor.transaction.TransactionException;
+import com.wezaam.withdrawal.processor.transaction.TransactionService;
+import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
+import com.wezaam.withdrawal.withdrawal.WithdrawalScheduledRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

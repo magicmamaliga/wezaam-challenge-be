@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.exception;
+package com.wezaam.withdrawal.util.exception;
 
 public class BaseBadRequestException extends RuntimeException {
     public BaseBadRequestException(String message) {

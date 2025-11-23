@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.event;
+package com.wezaam.withdrawal.processor.event;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

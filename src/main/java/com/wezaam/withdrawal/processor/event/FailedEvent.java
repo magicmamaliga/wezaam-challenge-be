@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.event;
+package com.wezaam.withdrawal.processor.event;
 
 import com.wezaam.withdrawal.withdrawal.WithdrawalScheduled;
 import jakarta.persistence.*;

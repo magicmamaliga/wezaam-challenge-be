@@ -1,5 +1,7 @@
-package com.wezaam.withdrawal.exception;
+package com.wezaam.withdrawal.util;
 
+import com.wezaam.withdrawal.util.exception.BaseBadRequestException;
+import com.wezaam.withdrawal.util.exception.BaseNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

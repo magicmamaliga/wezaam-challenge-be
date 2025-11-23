@@ -1,4 +1,4 @@
-package com.wezaam.withdrawal.transaction;
+package com.wezaam.withdrawal.processor.transaction;
 
 import com.wezaam.withdrawal.payment.PaymentMethod;
 import org.springframework.stereotype.Component;
